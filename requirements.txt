@@ -1,0 +1,4 @@
+agent-framework==1.18.0
+agent-framework-foundry==1.13.0
+azure-identity
+python-dotenv
