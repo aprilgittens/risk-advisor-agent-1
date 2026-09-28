@@ -156,22 +156,34 @@ def build_messages(question: str) -> list[Message]:
 # 8. Run one question
 # ---------------------------------------------------------
 
+async def run_question(
+    question: str,
+    options: FoundryChatOptions | None = None,
+) -> tuple[str, dict[str, int]]:
+    response = await agent.run(
+        build_messages(question),
+        options=options or CACHE_OPTIONS,
+    )
+
+    usage = {
+        key: int(value)
+        for key, value in (response.usage_details or {}).items()
+        if isinstance(value, (int, float))
+    }
+    return response.text, usage
+
+
 async def ask(question: str) -> None:
     print("\n" + "=" * 70)
     print(f"USER: {question}")
     print("=" * 70)
 
-    response = await agent.run(
-        build_messages(question),
-        options=CACHE_OPTIONS,
-    )
+    response_text, usage = await run_question(question)
 
-    print(f"\nAGENT:\n{response.text}")
+    print(f"\nAGENT:\n{response_text}")
 
     # Agent Framework normalizes prompt-cache usage into
     # these fields when the provider returns them.
-    usage = response.usage_details or {}
-
     cache_write = usage.get(
         "cache_creation_input_token_count",
         0,

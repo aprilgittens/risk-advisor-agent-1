@@ -1,0 +1,1896 @@
+{
+  "schema_version": 1,
+  "run": {
+    "model": "gpt-5.6-sol-1",
+    "source": "northwind_traders_model_router_eval_50.jsonl",
+    "cache_key": "risk-advisor-methodology-v1-601240c39c30",
+    "started_at": "2026-09-18T20:49:05.213340+00:00",
+    "updated_at": "2026-09-18T21:02:43.407721+00:00",
+    "status": "completed",
+    "completed": 50,
+    "failed": 0
+  },
+  "pricing_usd_per_million_tokens": {
+    "standard_input": 5.0,
+    "cache_write": 6.25,
+    "cache_read": 0.5,
+    "output": 30.0
+  },
+  "items": [
+    {
+      "id": "nwt_001",
+      "prompt": "Summarize Northwind Traders' company profile in five concise bullet points for a risk advisor preparing for a client meeting.",
+      "category": "summarization",
+      "difficulty": "easy",
+      "measured_at": "2026-09-18T20:49:05.213465+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11447,
+        "output_token_count": 396,
+        "total_token_count": 11843,
+        "openai.cache_write_tokens": 4002,
+        "cache_creation_input_token_count": 4002,
+        "openai.cached_input_tokens": 0,
+        "cache_read_input_token_count": 0,
+        "openai.reasoning_tokens": 104,
+        "reasoning_output_token_count": 104
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11447,
+          "standard_input": 7445,
+          "cache_write": 4002,
+          "cache_read": 0,
+          "output": 396
+        },
+        "costs": {
+          "with_cache": 0.0741175,
+          "without_cache": 0.069115,
+          "savings": -0.005002500000000007,
+          "savings_percent": -7.2379367720465995
+        },
+        "cache_read_rate_percent": 0.0
+      }
+    },
+    {
+      "id": "nwt_002",
+      "prompt": "Summarize Northwind Traders' current insurance program, including the major coverages, limits, deductibles, and retentions.",
+      "category": "summarization",
+      "difficulty": "easy",
+      "measured_at": "2026-09-18T20:49:17.172271+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11468,
+        "output_token_count": 351,
+        "total_token_count": 11819,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 87,
+        "reasoning_output_token_count": 87
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11468,
+          "standard_input": 7466,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 351
+        },
+        "costs": {
+          "with_cache": 0.049861,
+          "without_cache": 0.06787,
+          "savings": 0.018008999999999997,
+          "savings_percent": 26.534551348165607
+        },
+        "cache_read_rate_percent": 34.89710498779212
+      }
+    },
+    {
+      "id": "nwt_003",
+      "prompt": "Summarize the three most significant incidents in Northwind Traders' recent claims history and include the estimated financial impact of each.",
+      "category": "summarization",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T20:49:26.982659+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11446,
+        "output_token_count": 273,
+        "total_token_count": 11719,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 66,
+        "reasoning_output_token_count": 66
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11446,
+          "standard_input": 7444,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 273
+        },
+        "costs": {
+          "with_cache": 0.047411,
+          "without_cache": 0.06542,
+          "savings": 0.018009000000000004,
+          "savings_percent": 27.528278813818407
+        },
+        "cache_read_rate_percent": 34.96417962607024
+      }
+    },
+    {
+      "id": "nwt_004",
+      "prompt": "Based on Northwind Traders' profile, identify the three risk areas that should receive the most attention during the upcoming annual risk strategy meeting and explain why.",
+      "category": "reasoning",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T20:49:34.263746+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11475,
+        "output_token_count": 1069,
+        "total_token_count": 12544,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 279,
+        "reasoning_output_token_count": 279
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11475,
+          "standard_input": 7473,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 1069
+        },
+        "costs": {
+          "with_cache": 0.071436,
+          "without_cache": 0.089445,
+          "savings": 0.018008999999999997,
+          "savings_percent": 20.134160657387216
+        },
+        "cache_read_rate_percent": 34.875816993464056
+      }
+    },
+    {
+      "id": "nwt_005",
+      "prompt": "Northwind Traders depends on approximately 240 critical suppliers, with 35% of critical production components coming from single-source or limited-source suppliers. Explain why this creates supply chain risk for the company.",
+      "category": "reasoning",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T20:49:50.516094+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11465,
+        "output_token_count": 477,
+        "total_token_count": 11942,
+        "openai.cache_write_tokens": 4002,
+        "cache_creation_input_token_count": 4002,
+        "openai.cached_input_tokens": 0,
+        "cache_read_input_token_count": 0,
+        "openai.reasoning_tokens": 149,
+        "reasoning_output_token_count": 149
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11465,
+          "standard_input": 7463,
+          "cache_write": 4002,
+          "cache_read": 0,
+          "output": 477
+        },
+        "costs": {
+          "with_cache": 0.0766375,
+          "without_cache": 0.071635,
+          "savings": -0.005002499999999993,
+          "savings_percent": -6.9833182103720155
+        },
+        "cache_read_rate_percent": 0.0
+      }
+    },
+    {
+      "id": "nwt_006",
+      "prompt": "Northwind Traders' Columbus manufacturing campus accounts for approximately 18% of total annual production. Explain how this concentration could affect the company's business interruption exposure.",
+      "category": "reasoning",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T20:50:00.846108+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11447,
+        "output_token_count": 609,
+        "total_token_count": 12056,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 198,
+        "reasoning_output_token_count": 198
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11447,
+          "standard_input": 7445,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 609
+        },
+        "costs": {
+          "with_cache": 0.057496,
+          "without_cache": 0.075505,
+          "savings": 0.018009000000000004,
+          "savings_percent": 23.85140056949871
+        },
+        "cache_read_rate_percent": 34.96112518563816
+      }
+    },
+    {
+      "id": "nwt_007",
+      "prompt": "Using the client profile, assess how Northwind Traders' planned manufacturing expansion into Monterrey, Mexico could change its property, supply chain, cyber, and business interruption risk exposure.",
+      "category": "reasoning",
+      "difficulty": "hard",
+      "measured_at": "2026-09-18T20:50:15.319444+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11490,
+        "output_token_count": 2603,
+        "total_token_count": 14093,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 404,
+        "reasoning_output_token_count": 404
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11490,
+          "standard_input": 7488,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 2603
+        },
+        "costs": {
+          "with_cache": 0.117531,
+          "without_cache": 0.13554,
+          "savings": 0.018008999999999997,
+          "savings_percent": 13.286852589641432
+        },
+        "cache_read_rate_percent": 34.83028720626632
+      }
+    },
+    {
+      "id": "nwt_008",
+      "prompt": "Compare the risk implications of Northwind Traders' planned Monterrey manufacturing facility with its planned Stuttgart engineering and research facility. Identify which risk categories are likely to differ between the two locations and explain why.",
+      "category": "reasoning",
+      "difficulty": "hard",
+      "measured_at": "2026-09-18T20:50:49.786397+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11519,
+        "output_token_count": 2535,
+        "total_token_count": 14054,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 411,
+        "reasoning_output_token_count": 411
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11519,
+          "standard_input": 7517,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 2535
+        },
+        "costs": {
+          "with_cache": 0.115636,
+          "without_cache": 0.133645,
+          "savings": 0.01800900000000001,
+          "savings_percent": 13.475251599386443
+        },
+        "cache_read_rate_percent": 34.74259918395694
+      }
+    },
+    {
+      "id": "nwt_009",
+      "prompt": "What is business interruption insurance, and why would it be relevant to a manufacturing company like Northwind Traders that operates continuous production lines and relies on specialized machinery?",
+      "category": "general_knowledge",
+      "difficulty": "easy",
+      "measured_at": "2026-09-18T20:51:27.606293+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11463,
+        "output_token_count": 632,
+        "total_token_count": 12095,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 77,
+        "reasoning_output_token_count": 77
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11463,
+          "standard_input": 7461,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 632
+        },
+        "costs": {
+          "with_cache": 0.058266,
+          "without_cache": 0.076275,
+          "savings": 0.018008999999999997,
+          "savings_percent": 23.61061946902655
+        },
+        "cache_read_rate_percent": 34.91232661606909
+      }
+    },
+    {
+      "id": "nwt_010",
+      "prompt": "What is operational technology cybersecurity, and why could legacy production systems, third-party remote access, and limited network segmentation increase cyber risk for a manufacturer like Northwind Traders?",
+      "category": "general_knowledge",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T20:51:39.766478+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11475,
+        "output_token_count": 963,
+        "total_token_count": 12438,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 162,
+        "reasoning_output_token_count": 162
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11475,
+          "standard_input": 7473,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 963
+        },
+        "costs": {
+          "with_cache": 0.068256,
+          "without_cache": 0.086265,
+          "savings": 0.018008999999999997,
+          "savings_percent": 20.87636932707355
+        },
+        "cache_read_rate_percent": 34.875816993464056
+      }
+    },
+    {
+      "id": "nwt_011",
+      "prompt": "Summarize Northwind Traders' major manufacturing locations and note any location-specific exposures mentioned in the profile.",
+      "category": "summarization",
+      "difficulty": "easy",
+      "measured_at": "2026-09-18T20:51:55.604268+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11425,
+        "output_token_count": 512,
+        "total_token_count": 11937,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 219,
+        "reasoning_output_token_count": 219
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11425,
+          "standard_input": 7423,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 512
+        },
+        "costs": {
+          "with_cache": 0.054476,
+          "without_cache": 0.072485,
+          "savings": 0.018008999999999997,
+          "savings_percent": 24.845140373870453
+        },
+        "cache_read_rate_percent": 35.02844638949672
+      }
+    },
+    {
+      "id": "nwt_012",
+      "prompt": "Summarize Northwind Traders' current cybersecurity controls and known cybersecurity concerns.",
+      "category": "summarization",
+      "difficulty": "easy",
+      "measured_at": "2026-09-18T20:52:06.190933+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11452,
+        "output_token_count": 495,
+        "total_token_count": 11947,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 128,
+        "reasoning_output_token_count": 128
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11452,
+          "standard_input": 7450,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 495
+        },
+        "costs": {
+          "with_cache": 0.054101,
+          "without_cache": 0.07211,
+          "savings": 0.01800899999999999,
+          "savings_percent": 24.974344751074735
+        },
+        "cache_read_rate_percent": 34.94586098498079
+      }
+    },
+    {
+      "id": "nwt_013",
+      "prompt": "Summarize Northwind Traders' top six enterprise risks identified by management.",
+      "category": "summarization",
+      "difficulty": "easy",
+      "measured_at": "2026-09-18T20:52:16.369196+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11428,
+        "output_token_count": 437,
+        "total_token_count": 11865,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 112,
+        "reasoning_output_token_count": 112
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11428,
+          "standard_input": 7426,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 437
+        },
+        "costs": {
+          "with_cache": 0.052241,
+          "without_cache": 0.07025,
+          "savings": 0.018009000000000004,
+          "savings_percent": 25.635587188612103
+        },
+        "cache_read_rate_percent": 35.01925096254813
+      }
+    },
+    {
+      "id": "nwt_014",
+      "prompt": "Summarize the purpose, staffing, and investment planned for Northwind Traders' Monterrey facility.",
+      "category": "summarization",
+      "difficulty": "easy",
+      "measured_at": "2026-09-18T20:52:26.810340+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11424,
+        "output_token_count": 135,
+        "total_token_count": 11559,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 49,
+        "reasoning_output_token_count": 49
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11424,
+          "standard_input": 7422,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 135
+        },
+        "costs": {
+          "with_cache": 0.043161,
+          "without_cache": 0.06117,
+          "savings": 0.018009000000000004,
+          "savings_percent": 29.440902403138796
+        },
+        "cache_read_rate_percent": 35.03151260504202
+      }
+    },
+    {
+      "id": "nwt_015",
+      "prompt": "Summarize the purpose, staffing, and investment planned for Northwind Traders' Stuttgart-area facility.",
+      "category": "summarization",
+      "difficulty": "easy",
+      "measured_at": "2026-09-18T20:52:32.998170+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11424,
+        "output_token_count": 126,
+        "total_token_count": 11550,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 49,
+        "reasoning_output_token_count": 49
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11424,
+          "standard_input": 7422,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 126
+        },
+        "costs": {
+          "with_cache": 0.042891,
+          "without_cache": 0.0609,
+          "savings": 0.018009000000000004,
+          "savings_percent": 29.571428571428577
+        },
+        "cache_read_rate_percent": 35.03151260504202
+      }
+    },
+    {
+      "id": "nwt_016",
+      "prompt": "Summarize Northwind Traders' key supply chain dependencies by component type and source region.",
+      "category": "summarization",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T20:52:39.220638+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11439,
+        "output_token_count": 406,
+        "total_token_count": 11845,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 66,
+        "reasoning_output_token_count": 66
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11439,
+          "standard_input": 7437,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 406
+        },
+        "costs": {
+          "with_cache": 0.051366,
+          "without_cache": 0.069375,
+          "savings": 0.018009000000000004,
+          "savings_percent": 25.958918918918922
+        },
+        "cache_read_rate_percent": 34.985575662208234
+      }
+    },
+    {
+      "id": "nwt_017",
+      "prompt": "Summarize the main property and business interruption concerns described in the client profile.",
+      "category": "summarization",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T20:52:48.915150+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11417,
+        "output_token_count": 613,
+        "total_token_count": 12030,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 217,
+        "reasoning_output_token_count": 217
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11417,
+          "standard_input": 7415,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 613
+        },
+        "costs": {
+          "with_cache": 0.057466,
+          "without_cache": 0.075475,
+          "savings": 0.018008999999999997,
+          "savings_percent": 23.860881086452466
+        },
+        "cache_read_rate_percent": 35.05299115354296
+      }
+    },
+    {
+      "id": "nwt_018",
+      "prompt": "Summarize Northwind Traders' risk management priorities for the next 12 months in a way suitable for an executive briefing.",
+      "category": "summarization",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T20:53:02.807183+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11472,
+        "output_token_count": 1608,
+        "total_token_count": 13080,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 321,
+        "reasoning_output_token_count": 321
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11472,
+          "standard_input": 7470,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 1608
+        },
+        "costs": {
+          "with_cache": 0.087591,
+          "without_cache": 0.1056,
+          "savings": 0.018008999999999997,
+          "savings_percent": 17.05397727272727
+        },
+        "cache_read_rate_percent": 34.88493723849373
+      }
+    },
+    {
+      "id": "nwt_019",
+      "prompt": "Summarize the factors in Northwind Traders' operating model that make resilience planning important.",
+      "category": "summarization",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T20:53:28.901133+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11437,
+        "output_token_count": 827,
+        "total_token_count": 12264,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 198,
+        "reasoning_output_token_count": 198
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11437,
+          "standard_input": 7435,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 827
+        },
+        "costs": {
+          "with_cache": 0.063986,
+          "without_cache": 0.081995,
+          "savings": 0.018008999999999997,
+          "savings_percent": 21.96353436185133
+        },
+        "cache_read_rate_percent": 34.99169362595086
+      }
+    },
+    {
+      "id": "nwt_020",
+      "prompt": "Summarize the information a risk advisor should be prepared to discuss with Northwind Traders' Chief Risk Officer at the upcoming annual risk strategy meeting.",
+      "category": "summarization",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T20:53:43.381697+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11533,
+        "output_token_count": 2828,
+        "total_token_count": 14361,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 426,
+        "reasoning_output_token_count": 426
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11533,
+          "standard_input": 7531,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 2828
+        },
+        "costs": {
+          "with_cache": 0.124496,
+          "without_cache": 0.142505,
+          "savings": 0.018008999999999997,
+          "savings_percent": 12.63745131749763
+        },
+        "cache_read_rate_percent": 34.70042486777075
+      }
+    },
+    {
+      "id": "nwt_021",
+      "prompt": "Why is Northwind Traders' reliance on 21 days of inventory for most critical components relevant to supply chain resilience?",
+      "category": "reasoning",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T20:54:22.137216+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11450,
+        "output_token_count": 458,
+        "total_token_count": 11908,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 72,
+        "reasoning_output_token_count": 72
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11450,
+          "standard_input": 7448,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 458
+        },
+        "costs": {
+          "with_cache": 0.052981,
+          "without_cache": 0.07099,
+          "savings": 0.018008999999999997,
+          "savings_percent": 25.36836174109029
+        },
+        "cache_read_rate_percent": 34.951965065502186
+      }
+    },
+    {
+      "id": "nwt_022",
+      "prompt": "Assess whether Northwind Traders' recent claims history supports management's decision to rank supply chain disruption, cybersecurity incidents, and business interruption among its top risks.",
+      "category": "reasoning",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T20:54:32.960364+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11501,
+        "output_token_count": 965,
+        "total_token_count": 12466,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 328,
+        "reasoning_output_token_count": 328
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11501,
+          "standard_input": 7499,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 965
+        },
+        "costs": {
+          "with_cache": 0.068446,
+          "without_cache": 0.086455,
+          "savings": 0.018008999999999997,
+          "savings_percent": 20.83048985021109
+        },
+        "cache_read_rate_percent": 34.7969741761586
+      }
+    },
+    {
+      "id": "nwt_023",
+      "prompt": "Explain how Northwind Traders' acquisition history may contribute to technology and operational risk across its facilities.",
+      "category": "reasoning",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T20:54:51.511682+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11457,
+        "output_token_count": 758,
+        "total_token_count": 12215,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 221,
+        "reasoning_output_token_count": 221
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11457,
+          "standard_input": 7455,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 758
+        },
+        "costs": {
+          "with_cache": 0.062016,
+          "without_cache": 0.080025,
+          "savings": 0.018008999999999997,
+          "savings_percent": 22.50421743205248
+        },
+        "cache_read_rate_percent": 34.93061010735794
+      }
+    },
+    {
+      "id": "nwt_024",
+      "prompt": "Explain why third-party remote access to industrial equipment could create additional risk for Northwind Traders.",
+      "category": "reasoning",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T20:55:05.701998+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11436,
+        "output_token_count": 563,
+        "total_token_count": 11999,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 175,
+        "reasoning_output_token_count": 175
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11436,
+          "standard_input": 7434,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 563
+        },
+        "costs": {
+          "with_cache": 0.056061,
+          "without_cache": 0.07407,
+          "savings": 0.018008999999999997,
+          "savings_percent": 24.313487241798295
+        },
+        "cache_read_rate_percent": 34.994753410283316
+      }
+    },
+    {
+      "id": "nwt_025",
+      "prompt": "Explain how inconsistent cybersecurity controls across acquired facilities could complicate enterprise-wide risk management for Northwind Traders.",
+      "category": "reasoning",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T20:55:18.118983+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11466,
+        "output_token_count": 834,
+        "total_token_count": 12300,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 217,
+        "reasoning_output_token_count": 217
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11466,
+          "standard_input": 7464,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 834
+        },
+        "costs": {
+          "with_cache": 0.064341,
+          "without_cache": 0.08235,
+          "savings": 0.01800900000000001,
+          "savings_percent": 21.868852459016406
+        },
+        "cache_read_rate_percent": 34.903192046049185
+      }
+    },
+    {
+      "id": "nwt_026",
+      "prompt": "Northwind Traders has not conducted a company-wide business continuity exercise in two years. Explain why that could be a concern given its operating profile.",
+      "category": "reasoning",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T20:55:33.785464+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11480,
+        "output_token_count": 711,
+        "total_token_count": 12191,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 214,
+        "reasoning_output_token_count": 214
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11480,
+          "standard_input": 7478,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 711
+        },
+        "costs": {
+          "with_cache": 0.060721,
+          "without_cache": 0.07873,
+          "savings": 0.018008999999999997,
+          "savings_percent": 22.87438079512257
+        },
+        "cache_read_rate_percent": 34.86062717770035
+      }
+    },
+    {
+      "id": "nwt_027",
+      "prompt": "Assess the implications of Northwind Traders operating several production lines 24 hours per day with specialized machinery that has long replacement lead times.",
+      "category": "reasoning",
+      "difficulty": "hard",
+      "measured_at": "2026-09-18T20:55:48.641400+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11460,
+        "output_token_count": 1372,
+        "total_token_count": 12832,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 276,
+        "reasoning_output_token_count": 276
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11460,
+          "standard_input": 7458,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 1372
+        },
+        "costs": {
+          "with_cache": 0.080451,
+          "without_cache": 0.09846,
+          "savings": 0.01800900000000001,
+          "savings_percent": 18.290676416819025
+        },
+        "cache_read_rate_percent": 34.92146596858638
+      }
+    },
+    {
+      "id": "nwt_028",
+      "prompt": "Based on the client profile, identify potential dependencies between cyber risk and business interruption risk at Northwind Traders.",
+      "category": "reasoning",
+      "difficulty": "hard",
+      "measured_at": "2026-09-18T20:56:11.380192+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11469,
+        "output_token_count": 1028,
+        "total_token_count": 12497,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 252,
+        "reasoning_output_token_count": 252
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11469,
+          "standard_input": 7467,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 1028
+        },
+        "costs": {
+          "with_cache": 0.070176,
+          "without_cache": 0.088185,
+          "savings": 0.018008999999999997,
+          "savings_percent": 20.42184044905596
+        },
+        "cache_read_rate_percent": 34.894062254773736
+      }
+    },
+    {
+      "id": "nwt_029",
+      "prompt": "Based on the client profile, identify potential dependencies between supply chain risk and business interruption risk at Northwind Traders.",
+      "category": "reasoning",
+      "difficulty": "hard",
+      "measured_at": "2026-09-18T20:56:28.013481+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11448,
+        "output_token_count": 1135,
+        "total_token_count": 12583,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 399,
+        "reasoning_output_token_count": 399
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11448,
+          "standard_input": 7446,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 1135
+        },
+        "costs": {
+          "with_cache": 0.073281,
+          "without_cache": 0.09129,
+          "savings": 0.018008999999999997,
+          "savings_percent": 19.72724285244824
+        },
+        "cache_read_rate_percent": 34.958071278826
+      }
+    },
+    {
+      "id": "nwt_030",
+      "prompt": "Assess how a severe weather event at one of Northwind Traders' major facilities could create cascading operational and financial impacts.",
+      "category": "reasoning",
+      "difficulty": "hard",
+      "measured_at": "2026-09-18T20:56:46.345899+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11512,
+        "output_token_count": 2252,
+        "total_token_count": 13764,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 442,
+        "reasoning_output_token_count": 442
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11512,
+          "standard_input": 7510,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 2252
+        },
+        "costs": {
+          "with_cache": 0.107111,
+          "without_cache": 0.12512,
+          "savings": 0.01800900000000001,
+          "savings_percent": 14.393382352941183
+        },
+        "cache_read_rate_percent": 34.76372480889506
+      }
+    },
+    {
+      "id": "nwt_031",
+      "prompt": "Northwind Traders has $1.4 billion in physical property and manufacturing equipment but a property insurance limit of $750 million. What questions should a risk advisor raise before drawing conclusions about adequacy of coverage?",
+      "category": "reasoning",
+      "difficulty": "hard",
+      "measured_at": "2026-09-18T20:57:20.334361+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11522,
+        "output_token_count": 1075,
+        "total_token_count": 12597,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 244,
+        "reasoning_output_token_count": 244
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11522,
+          "standard_input": 7520,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 1075
+        },
+        "costs": {
+          "with_cache": 0.071851,
+          "without_cache": 0.08986,
+          "savings": 0.018008999999999997,
+          "savings_percent": 20.04117516136212
+        },
+        "cache_read_rate_percent": 34.733553202569
+      }
+    },
+    {
+      "id": "nwt_032",
+      "prompt": "Northwind Traders has a $50 million cyber limit and a history of ransomware disruption. What additional information would a risk advisor need before assessing whether the cyber program is appropriate?",
+      "category": "reasoning",
+      "difficulty": "hard",
+      "measured_at": "2026-09-18T20:57:41.042704+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11491,
+        "output_token_count": 1082,
+        "total_token_count": 12573,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 218,
+        "reasoning_output_token_count": 218
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11491,
+          "standard_input": 7489,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 1082
+        },
+        "costs": {
+          "with_cache": 0.071906,
+          "without_cache": 0.089915,
+          "savings": 0.018008999999999997,
+          "savings_percent": 20.02891619863204
+        },
+        "cache_read_rate_percent": 34.82725611348012
+      }
+    },
+    {
+      "id": "nwt_033",
+      "prompt": "What additional risk questions should be asked before Northwind Traders opens the planned Monterrey manufacturing facility?",
+      "category": "reasoning",
+      "difficulty": "hard",
+      "measured_at": "2026-09-18T20:58:02.418387+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11463,
+        "output_token_count": 2448,
+        "total_token_count": 13911,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 884,
+        "reasoning_output_token_count": 884
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11463,
+          "standard_input": 7461,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 2448
+        },
+        "costs": {
+          "with_cache": 0.112746,
+          "without_cache": 0.130755,
+          "savings": 0.01800900000000001,
+          "savings_percent": 13.773087071240115
+        },
+        "cache_read_rate_percent": 34.91232661606909
+      }
+    },
+    {
+      "id": "nwt_034",
+      "prompt": "What additional risk questions should be asked before Northwind Traders opens the planned Stuttgart engineering and research facility?",
+      "category": "reasoning",
+      "difficulty": "hard",
+      "measured_at": "2026-09-18T20:58:40.280687+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11464,
+        "output_token_count": 1753,
+        "total_token_count": 13217,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 230,
+        "reasoning_output_token_count": 230
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11464,
+          "standard_input": 7462,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 1753
+        },
+        "costs": {
+          "with_cache": 0.091901,
+          "without_cache": 0.10991,
+          "savings": 0.018008999999999997,
+          "savings_percent": 16.385224274406333
+        },
+        "cache_read_rate_percent": 34.909281228192604
+      }
+    },
+    {
+      "id": "nwt_035",
+      "prompt": "Compare the likely operational consequences of a disruption at the Columbus campus with a disruption at a smaller regional office.",
+      "category": "reasoning",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T20:59:15.075047+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11453,
+        "output_token_count": 659,
+        "total_token_count": 12112,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 181,
+        "reasoning_output_token_count": 181
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11453,
+          "standard_input": 7451,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 659
+        },
+        "costs": {
+          "with_cache": 0.059026,
+          "without_cache": 0.077035,
+          "savings": 0.018009000000000004,
+          "savings_percent": 23.37768546764458
+        },
+        "cache_read_rate_percent": 34.94280974417183
+      }
+    },
+    {
+      "id": "nwt_036",
+      "prompt": "If Northwind Traders' semiconductor supplier disruption lasted twice as long as the prior nine-day event, what parts of the client profile suggest the company could face increased operational pressure?",
+      "category": "reasoning",
+      "difficulty": "hard",
+      "measured_at": "2026-09-18T20:59:27.457488+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11489,
+        "output_token_count": 996,
+        "total_token_count": 12485,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 477,
+        "reasoning_output_token_count": 477
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11489,
+          "standard_input": 7487,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 996
+        },
+        "costs": {
+          "with_cache": 0.069316,
+          "without_cache": 0.087325,
+          "savings": 0.018008999999999997,
+          "savings_percent": 20.622960206126535
+        },
+        "cache_read_rate_percent": 34.8333188267038
+      }
+    },
+    {
+      "id": "nwt_037",
+      "prompt": "Explain why limited alternate manufacturing capacity can amplify losses after a property or equipment failure.",
+      "category": "reasoning",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T20:59:47.266678+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 4051,
+        "output_token_count": 322,
+        "total_token_count": 4373,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 47,
+        "reasoning_output_token_count": 47
+      },
+      "analysis": {
+        "tokens": {
+          "input": 4051,
+          "standard_input": 49,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 322
+        },
+        "costs": {
+          "with_cache": 0.011906,
+          "without_cache": 0.029915,
+          "savings": 0.018009,
+          "savings_percent": 60.200568276784225
+        },
+        "cache_read_rate_percent": 98.79042211799556
+      }
+    },
+    {
+      "id": "nwt_038",
+      "prompt": "How could Northwind Traders' international expansion increase the complexity of its insurance and risk management program even if the new facilities perform well operationally?",
+      "category": "reasoning",
+      "difficulty": "hard",
+      "measured_at": "2026-09-18T20:59:56.407092+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11482,
+        "output_token_count": 854,
+        "total_token_count": 12336,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 226,
+        "reasoning_output_token_count": 226
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11482,
+          "standard_input": 7480,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 854
+        },
+        "costs": {
+          "with_cache": 0.065021,
+          "without_cache": 0.08303,
+          "savings": 0.01800900000000001,
+          "savings_percent": 21.689750692520786
+        },
+        "cache_read_rate_percent": 34.85455495558265
+      }
+    },
+    {
+      "id": "nwt_039",
+      "prompt": "What is a retention in an insurance policy, and how does it differ from a policy limit? Use Northwind Traders' cyber coverage as context.",
+      "category": "general_knowledge",
+      "difficulty": "easy",
+      "measured_at": "2026-09-18T21:00:12.675783+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11452,
+        "output_token_count": 415,
+        "total_token_count": 11867,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 68,
+        "reasoning_output_token_count": 68
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11452,
+          "standard_input": 7450,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 415
+        },
+        "costs": {
+          "with_cache": 0.051701,
+          "without_cache": 0.06971,
+          "savings": 0.018008999999999997,
+          "savings_percent": 25.834170133409838
+        },
+        "cache_read_rate_percent": 34.94586098498079
+      }
+    },
+    {
+      "id": "nwt_040",
+      "prompt": "What is a deductible, and how would Northwind Traders' $2 million property deductible affect the way smaller property losses are handled?",
+      "category": "general_knowledge",
+      "difficulty": "easy",
+      "measured_at": "2026-09-18T21:00:23.355279+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11449,
+        "output_token_count": 265,
+        "total_token_count": 11714,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 68,
+        "reasoning_output_token_count": 68
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11449,
+          "standard_input": 7447,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 265
+        },
+        "costs": {
+          "with_cache": 0.047186,
+          "without_cache": 0.065195,
+          "savings": 0.018009000000000004,
+          "savings_percent": 27.623283994171338
+        },
+        "cache_read_rate_percent": 34.95501790549393
+      }
+    },
+    {
+      "id": "nwt_041",
+      "prompt": "What is supply chain concentration risk, and how does Northwind Traders' use of single-source or limited-source suppliers illustrate it?",
+      "category": "general_knowledge",
+      "difficulty": "easy",
+      "measured_at": "2026-09-18T21:00:31.893191+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11451,
+        "output_token_count": 410,
+        "total_token_count": 11861,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 71,
+        "reasoning_output_token_count": 71
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11451,
+          "standard_input": 7449,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 410
+        },
+        "costs": {
+          "with_cache": 0.051546,
+          "without_cache": 0.069555,
+          "savings": 0.018009000000000004,
+          "savings_percent": 25.89174034936382
+        },
+        "cache_read_rate_percent": 34.94891275871103
+      }
+    },
+    {
+      "id": "nwt_042",
+      "prompt": "What is enterprise risk management, and how does Northwind Traders' centralized risk program reflect that concept?",
+      "category": "general_knowledge",
+      "difficulty": "easy",
+      "measured_at": "2026-09-18T21:00:42.099525+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11460,
+        "output_token_count": 496,
+        "total_token_count": 11956,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 163,
+        "reasoning_output_token_count": 163
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11460,
+          "standard_input": 7458,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 496
+        },
+        "costs": {
+          "with_cache": 0.054171,
+          "without_cache": 0.07218,
+          "savings": 0.018008999999999997,
+          "savings_percent": 24.9501246882793
+        },
+        "cache_read_rate_percent": 34.92146596858638
+      }
+    },
+    {
+      "id": "nwt_043",
+      "prompt": "What is network segmentation in an industrial environment, and why can limited segmentation increase cyber exposure?",
+      "category": "general_knowledge",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T21:00:54.871543+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 4053,
+        "output_token_count": 359,
+        "total_token_count": 4412,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 78,
+        "reasoning_output_token_count": 78
+      },
+      "analysis": {
+        "tokens": {
+          "input": 4053,
+          "standard_input": 51,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 359
+        },
+        "costs": {
+          "with_cache": 0.013026,
+          "without_cache": 0.031035,
+          "savings": 0.018009,
+          "savings_percent": 58.02803286611889
+        },
+        "cache_read_rate_percent": 98.74167283493709
+      }
+    },
+    {
+      "id": "nwt_044",
+      "prompt": "What is a business continuity exercise, and why is it useful for a manufacturer with multiple critical sites and continuous operations?",
+      "category": "general_knowledge",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T21:01:04.238511+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 4058,
+        "output_token_count": 430,
+        "total_token_count": 4488,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 0,
+        "reasoning_output_token_count": 0
+      },
+      "analysis": {
+        "tokens": {
+          "input": 4058,
+          "standard_input": 56,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 430
+        },
+        "costs": {
+          "with_cache": 0.015181,
+          "without_cache": 0.03319,
+          "savings": 0.018008999999999997,
+          "savings_percent": 54.26031937330521
+        },
+        "cache_read_rate_percent": 98.62000985707246
+      }
+    },
+    {
+      "id": "nwt_045",
+      "prompt": "What is single-source supplier risk, and what kinds of mitigation strategies are commonly used to reduce it?",
+      "category": "general_knowledge",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T21:01:15.413579+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 4055,
+        "output_token_count": 635,
+        "total_token_count": 4690,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 46,
+        "reasoning_output_token_count": 46
+      },
+      "analysis": {
+        "tokens": {
+          "input": 4055,
+          "standard_input": 53,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 635
+        },
+        "costs": {
+          "with_cache": 0.021316,
+          "without_cache": 0.039325,
+          "savings": 0.018008999999999997,
+          "savings_percent": 45.79529561347743
+        },
+        "cache_read_rate_percent": 98.69297163995068
+      }
+    },
+    {
+      "id": "nwt_046",
+      "prompt": "What is property concentration risk, and how could Northwind Traders' production footprint create it?",
+      "category": "general_knowledge",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T21:01:29.006484+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11449,
+        "output_token_count": 515,
+        "total_token_count": 11964,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 166,
+        "reasoning_output_token_count": 166
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11449,
+          "standard_input": 7447,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 515
+        },
+        "costs": {
+          "with_cache": 0.054686,
+          "without_cache": 0.072695,
+          "savings": 0.018008999999999997,
+          "savings_percent": 24.773368182130817
+        },
+        "cache_read_rate_percent": 34.95501790549393
+      }
+    },
+    {
+      "id": "nwt_047",
+      "prompt": "What is operational resilience, and how is it different from simply having insurance coverage? Apply the distinction to Northwind Traders.",
+      "category": "general_knowledge",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T21:01:39.957056+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11461,
+        "output_token_count": 1226,
+        "total_token_count": 12687,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 130,
+        "reasoning_output_token_count": 130
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11461,
+          "standard_input": 7459,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 1226
+        },
+        "costs": {
+          "with_cache": 0.076076,
+          "without_cache": 0.094085,
+          "savings": 0.018008999999999997,
+          "savings_percent": 19.141202104479987
+        },
+        "cache_read_rate_percent": 34.918418986126866
+      }
+    },
+    {
+      "id": "nwt_048",
+      "prompt": "What is ransomware business interruption exposure, and why can it extend beyond downtime of corporate email or administrative systems?",
+      "category": "general_knowledge",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T21:02:01.042440+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 4056,
+        "output_token_count": 430,
+        "total_token_count": 4486,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 53,
+        "reasoning_output_token_count": 53
+      },
+      "analysis": {
+        "tokens": {
+          "input": 4056,
+          "standard_input": 54,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 430
+        },
+        "costs": {
+          "with_cache": 0.015171,
+          "without_cache": 0.03318,
+          "savings": 0.018009,
+          "savings_percent": 54.276672694394215
+        },
+        "cache_read_rate_percent": 98.66863905325444
+      }
+    },
+    {
+      "id": "nwt_049",
+      "prompt": "Explain the difference between risk transfer and risk mitigation, and provide one example of each that would be relevant to Northwind Traders.",
+      "category": "general_knowledge",
+      "difficulty": "medium",
+      "measured_at": "2026-09-18T21:02:12.415507+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11446,
+        "output_token_count": 287,
+        "total_token_count": 11733,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 66,
+        "reasoning_output_token_count": 66
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11446,
+          "standard_input": 7444,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 287
+        },
+        "costs": {
+          "with_cache": 0.047831,
+          "without_cache": 0.06584,
+          "savings": 0.018008999999999997,
+          "savings_percent": 27.352673147023083
+        },
+        "cache_read_rate_percent": 34.96417962607024
+      }
+    },
+    {
+      "id": "nwt_050",
+      "prompt": "What is risk aggregation, and how could cyber, supply chain, property, and business interruption exposures combine to create a larger loss event for Northwind Traders?",
+      "category": "general_knowledge",
+      "difficulty": "hard",
+      "measured_at": "2026-09-18T21:02:23.469455+00:00",
+      "status": "completed",
+      "usage": {
+        "input_token_count": 11481,
+        "output_token_count": 1215,
+        "total_token_count": 12696,
+        "openai.cache_write_tokens": 0,
+        "cache_creation_input_token_count": 0,
+        "openai.cached_input_tokens": 4002,
+        "cache_read_input_token_count": 4002,
+        "openai.reasoning_tokens": 354,
+        "reasoning_output_token_count": 354
+      },
+      "analysis": {
+        "tokens": {
+          "input": 11481,
+          "standard_input": 7479,
+          "cache_write": 0,
+          "cache_read": 4002,
+          "output": 1215
+        },
+        "costs": {
+          "with_cache": 0.075846,
+          "without_cache": 0.093855,
+          "savings": 0.018008999999999997,
+          "savings_percent": 19.188109317564326
+        },
+        "cache_read_rate_percent": 34.857590802194935
+      }
+    }
+  ],
+  "summary": {
+    "requests": 50,
+    "tokens": {
+      "input": 536111,
+      "standard_input": 336011,
+      "cache_write": 8004,
+      "cache_read": 192096,
+      "output": 43843
+    },
+    "costs": {
+      "with_cache": 3.1414180000000003,
+      "without_cache": 3.9958450000000005,
+      "savings": 0.8544270000000003,
+      "savings_percent": 21.38288647332417
+    },
+    "cache_read_rate_percent": 35.83138566453589
+  },
+  "groups": {
+    "category": {
+      "general_knowledge": {
+        "requests": 14,
+        "tokens": {
+          "input": 130809,
+          "standard_input": 74781,
+          "cache_write": 0,
+          "cache_read": 56028,
+          "output": 8278
+        },
+        "costs": {
+          "with_cache": 0.650259,
+          "without_cache": 0.9023849999999999,
+          "savings": 0.25212599999999996,
+          "savings_percent": 27.93995910836284
+        },
+        "cache_read_rate_percent": 42.83191523519024
+      },
+      "reasoning": {
+        "requests": 23,
+        "tokens": {
+          "input": 256490,
+          "standard_input": 164444,
+          "cache_write": 4002,
+          "cache_read": 88044,
+          "output": 26558
+        },
+        "costs": {
+          "with_cache": 1.6879945,
+          "without_cache": 2.07919,
+          "savings": 0.3911955,
+          "savings_percent": 18.814802879967676
+        },
+        "cache_read_rate_percent": 34.3264844633319
+      },
+      "summarization": {
+        "requests": 13,
+        "tokens": {
+          "input": 148812,
+          "standard_input": 96786,
+          "cache_write": 4002,
+          "cache_read": 48024,
+          "output": 9007
+        },
+        "costs": {
+          "with_cache": 0.8031645000000001,
+          "without_cache": 1.01427,
+          "savings": 0.21110549999999997,
+          "savings_percent": 20.813540773166906
+        },
+        "cache_read_rate_percent": 32.27159100072575
+      }
+    },
+    "difficulty": {
+      "easy": {
+        "requests": 12,
+        "tokens": {
+          "input": 137343,
+          "standard_input": 89319,
+          "cache_write": 4002,
+          "cache_read": 44022,
+          "output": 4670
+        },
+        "costs": {
+          "with_cache": 0.6337185,
+          "without_cache": 0.8268150000000001,
+          "savings": 0.19309649999999995,
+          "savings_percent": 23.354256998240228
+        },
+        "cache_read_rate_percent": 32.052598239444315
+      },
+      "hard": {
+        "requests": 13,
+        "tokens": {
+          "input": 149290,
+          "standard_input": 97264,
+          "cache_write": 0,
+          "cache_read": 52026,
+          "output": 20348
+        },
+        "costs": {
+          "with_cache": 1.1227730000000002,
+          "without_cache": 1.35689,
+          "savings": 0.23411700000000002,
+          "savings_percent": 17.253940997427943
+        },
+        "cache_read_rate_percent": 34.84895170473575
+      },
+      "medium": {
+        "requests": 25,
+        "tokens": {
+          "input": 249478,
+          "standard_input": 149428,
+          "cache_write": 4002,
+          "cache_read": 96048,
+          "output": 18825
+        },
+        "costs": {
+          "with_cache": 1.3849265,
+          "without_cache": 1.8121399999999999,
+          "savings": 0.42721349999999997,
+          "savings_percent": 23.57508249914466
+        },
+        "cache_read_rate_percent": 38.499587137944026
+      }
+    }
+  }
+}

@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prompt Cache Economics</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background-color: var(--cp-bg);
+      background-image: linear-gradient(var(--cp-bg-elevated), var(--cp-bg));
+      color: var(--cp-text);
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+      letter-spacing: 0;
+    }
+    button, input, select { font: inherit; letter-spacing: 0; }
+    button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid var(--cp-accent); outline-offset: 2px; }
+    .shell { width: min(1480px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 56px; }
+    .masthead {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: flex-end;
+      padding: 24px 0 28px;
+      border-bottom: 1px solid var(--cp-border-strong);
+    }
+    .eyebrow { margin: 0 0 8px; color: var(--cp-accent); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
+    h1 { margin: 0; max-width: 720px; font-size: clamp(2rem, 4vw, 3.75rem); font-weight: 650; line-height: 1.02; }
+    .subtitle { margin: 12px 0 0; max-width: 680px; color: var(--cp-text-muted); font-size: 1rem; }
+    .run-state { min-width: 260px; text-align: right; }
+    .status { display: inline-flex; align-items: center; gap: 8px; color: var(--cp-text); font-size: 0.82rem; font-weight: 650; text-transform: uppercase; }
+    .status::before { width: 10px; height: 10px; border-radius: 50%; background: var(--cp-success); content: ""; }
+    .status.partial::before { background: var(--cp-warning); }
+    .run-meta { margin-top: 8px; color: var(--cp-text-muted); font-family: Consolas, "Courier New", Courier, monospace; font-size: 0.78rem; }
+    .kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 20px 0 12px; }
+    .card, .panel {
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+      background: var(--cp-surface);
+      box-shadow: 0 0 2px var(--cp-border), 0 1px 2px var(--cp-border);
+    }
+    .kpi { min-height: 150px; padding: 20px; position: relative; overflow: hidden; }
+    .kpi::after { position: absolute; inset: auto 0 0; height: 5px; background: var(--cp-border-strong); content: ""; }
+    .kpi.savings::after { background: var(--cp-success); }
+    .kpi-label { margin: 0; color: var(--cp-text-muted); font-size: 0.78rem; font-weight: 650; text-transform: uppercase; }
+    .kpi-value { margin: 18px 0 6px; font-size: clamp(1.65rem, 3vw, 2.65rem); font-weight: 650; line-height: 1; }
+    .kpi-detail { margin: 0; color: var(--cp-text-soft); font-size: 0.82rem; }
+    .callout { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; padding: 16px 20px; border-left: 5px solid var(--cp-accent); }
+    .callout strong { white-space: nowrap; }
+    .callout p { margin: 0; color: var(--cp-text-muted); }
+    .grid { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.55fr); gap: 12px; margin-bottom: 12px; }
+    .panel { padding: 20px; min-width: 0; }
+    .panel-head { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; margin-bottom: 20px; }
+    .panel h2 { margin: 0; font-size: 1.05rem; }
+    .panel-note { color: var(--cp-text-muted); font-size: 0.78rem; }
+    .compare-row { display: grid; grid-template-columns: 112px minmax(0, 1fr) 88px; gap: 12px; align-items: center; margin: 16px 0; }
+    .compare-label { color: var(--cp-text-muted); font-size: 0.82rem; }
+    .track { height: 28px; overflow: hidden; border: 1px solid var(--cp-border); border-radius: 0.625rem; background: var(--cp-surface-soft); }
+    .bar { height: 100%; min-width: 2px; background: var(--cp-border-strong); }
+    .bar.cached { background: var(--cp-accent); }
+    .compare-value { text-align: right; font-family: Consolas, "Courier New", Courier, monospace; font-size: 0.8rem; }
+    .token-total { margin: 4px 0 16px; font-size: 2rem; font-weight: 650; }
+    .stack { display: flex; height: 32px; overflow: hidden; border-radius: 0.625rem; background: var(--cp-surface-soft); }
+    .segment.standard { background: var(--cp-border-strong); }
+    .segment.read { background: var(--cp-success); }
+    .segment.write { background: var(--cp-warning); }
+    .legend { display: grid; gap: 9px; margin-top: 18px; }
+    .legend-row { display: grid; grid-template-columns: 12px 1fr auto; gap: 9px; align-items: center; font-size: 0.8rem; }
+    .swatch { width: 12px; height: 12px; border-radius: 2px; background: var(--cp-border-strong); }
+    .swatch.read { background: var(--cp-success); }
+    .swatch.write { background: var(--cp-warning); }
+    .chart-wrap { min-height: 310px; }
+    #trendChart { display: block; width: 100%; height: 280px; overflow: visible; }
+    .chart-legend { display: flex; gap: 18px; margin-top: 8px; color: var(--cp-text-muted); font-size: 0.8rem; }
+    .chart-key::before { display: inline-block; width: 18px; height: 3px; margin: 0 7px 3px 0; background: var(--cp-border-strong); content: ""; }
+    .chart-key.cached::before { background: var(--cp-accent); }
+    .table-panel { padding: 0; overflow: hidden; }
+    .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 18px 20px; border-bottom: 1px solid var(--cp-border); }
+    .toolbar h2 { margin-right: auto; }
+    .control { min-height: 38px; border: 1px solid var(--cp-border-strong); border-radius: 0.625rem; background: var(--cp-surface); color: var(--cp-text); padding: 7px 10px; }
+    input.control { width: min(300px, 100%); }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; min-width: 1040px; border-collapse: collapse; }
+    th, td { padding: 13px 14px; border-bottom: 1px solid var(--cp-border); text-align: right; vertical-align: top; font-size: 0.79rem; }
+    th { position: sticky; top: 0; background: var(--cp-surface-soft); color: var(--cp-text-muted); font-weight: 650; white-space: nowrap; }
+    th:first-child, th:nth-child(2), td:first-child, td:nth-child(2) { text-align: left; }
+    .sort-button { border: 0; background: transparent; color: inherit; cursor: pointer; font-weight: inherit; padding: 0; }
+    .prompt { max-width: 440px; min-width: 260px; line-height: 1.4; }
+    .id { font-family: Consolas, "Courier New", Courier, monospace; }
+    .tag { display: inline-block; border: 1px solid var(--cp-border); border-radius: 0.625rem; padding: 3px 7px; color: var(--cp-text-muted); text-transform: capitalize; }
+    .positive { color: var(--cp-success); font-weight: 650; }
+    .negative { color: var(--cp-danger); font-weight: 650; }
+    .failed { color: var(--cp-danger); }
+    .empty { padding: 52px 24px; text-align: center; color: var(--cp-text-muted); }
+    .pricing { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 12px; color: var(--cp-text-muted); font-size: 0.72rem; }
+    .pricing span { font-family: Consolas, "Courier New", Courier, monospace; }
+    @media (max-width: 980px) {
+      .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid { grid-template-columns: 1fr; }
+      .run-state { min-width: 0; }
+    }
+    @media (max-width: 640px) {
+      .shell { width: min(100% - 20px, 1480px); padding-top: 8px; }
+      .masthead { align-items: flex-start; flex-direction: column; }
+      .run-state { text-align: left; }
+      .kpis { grid-template-columns: 1fr; }
+      .kpi { min-height: 128px; }
+      .callout { align-items: flex-start; flex-direction: column; gap: 5px; }
+      .compare-row { grid-template-columns: 92px minmax(90px, 1fr); }
+      .compare-value { grid-column: 2; text-align: left; }
+      .toolbar { align-items: stretch; flex-direction: column; }
+      .toolbar h2 { margin-right: 0; }
+      input.control { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="masthead">
+      <div>
+        <p class="eyebrow">Model economics</p>
+        <h1>Prompt Cache Savings</h1>
+        <p class="subtitle">Measured token usage compared with an equivalent no-cache billing baseline.</p>
+      </div>
+      <div class="run-state">
+        <div id="runStatus" class="status">Completed</div>
+        <div id="runMeta" class="run-meta"></div>
+      </div>
+    </header>
+
+    <section class="kpis" aria-label="Cost summary">
+      <article class="card kpi"><p class="kpi-label">Cost with cache</p><p id="cachedCost" class="kpi-value">$0</p><p class="kpi-detail">Measured billing estimate</p></article>
+      <article class="card kpi"><p class="kpi-label">Without cache</p><p id="baselineCost" class="kpi-value">$0</p><p class="kpi-detail">Same tokens at standard input rate</p></article>
+      <article class="card kpi savings"><p class="kpi-label">Net savings</p><p id="savings" class="kpi-value">$0</p><p id="savingsPercent" class="kpi-detail">0%</p></article>
+      <article class="card kpi"><p class="kpi-label">Cache read rate</p><p id="readRate" class="kpi-value">0%</p><p id="requestCount" class="kpi-detail">0 measured requests</p></article>
+    </section>
+
+    <section class="panel callout" aria-label="Interpretation">
+      <strong id="verdict">Awaiting measurements</strong>
+      <p id="verdictDetail">Run the evaluation to populate this report.</p>
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <div class="panel-head"><h2>Cost comparison</h2><span class="panel-note">USD</span></div>
+        <div id="costComparison"></div>
+        <div id="pricing" class="pricing"></div>
+      </article>
+      <article class="panel">
+        <div class="panel-head"><h2>Input token mix</h2><span class="panel-note">Measured</span></div>
+        <div id="tokenMix"></div>
+      </article>
+    </section>
+
+    <section class="panel chart-wrap">
+      <div class="panel-head"><h2>Cumulative cost</h2><span class="panel-note">Request sequence</span></div>
+      <svg id="trendChart" role="img" aria-label="Cumulative cached and no-cache cost lines"></svg>
+      <div class="chart-legend"><span class="chart-key cached">With cache</span><span class="chart-key">Without cache</span></div>
+    </section>
+
+    <section class="panel table-panel">
+      <div class="toolbar">
+        <h2>Request detail</h2>
+        <input id="search" class="control" type="search" placeholder="Search prompts" aria-label="Search prompts">
+        <select id="categoryFilter" class="control" aria-label="Filter by category"><option value="">All categories</option></select>
+        <select id="difficultyFilter" class="control" aria-label="Filter by difficulty"><option value="">All difficulties</option></select>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th aria-sort="ascending"><button class="sort-button" data-sort="id">ID</button></th>
+            <th><button class="sort-button" data-sort="prompt">Prompt</button></th>
+            <th><button class="sort-button" data-sort="input">Total input</button></th>
+            <th><button class="sort-button" data-sort="standard_input">Standard input</button></th>
+            <th><button class="sort-button" data-sort="cache_write">Cache write</button></th>
+            <th><button class="sort-button" data-sort="cache_read">Cache read</button></th>
+            <th><button class="sort-button" data-sort="output">Output</button></th>
+            <th><button class="sort-button" data-sort="with_cache">With cache</button></th>
+            <th><button class="sort-button" data-sort="without_cache">No cache</button></th>
+            <th><button class="sort-button" data-sort="savings">Savings</button></th>
+          </tr></thead>
+          <tbody id="requestRows"></tbody>
+        </table>
+        <div id="emptyState" class="empty" hidden>No requests match these filters.</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const DATA = __PROMPT_CACHE_DATA__;
+    const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 4, maximumFractionDigits: 4 });
+    const integer = new Intl.NumberFormat("en-US");
+    const percent = value => `${Number(value || 0).toFixed(1)}%`;
+    const completedItems = DATA.items.filter(item => item.status === "completed");
+    let sort = { field: "id", direction: 1 };
+
+    function text(id, value) { document.getElementById(id).textContent = value; }
+    function analysisValue(item, section, field) { return item.analysis?.[section]?.[field] ?? 0; }
+
+    function renderHeader() {
+      const run = DATA.run;
+      const summary = DATA.summary;
+      const costs = summary.costs || {};
+      const status = document.getElementById("runStatus");
+      status.textContent = run.status === "completed" ? "Evaluation complete" : "Partial evaluation";
+      status.classList.toggle("partial", run.status !== "completed");
+      text("runMeta", `${run.model || "Unknown model"} · ${run.completed || 0} complete · ${run.failed || 0} failed`);
+      text("cachedCost", money.format(costs.with_cache || 0));
+      text("baselineCost", money.format(costs.without_cache || 0));
+      text("savings", money.format(costs.savings || 0));
+      text("savingsPercent", `${percent(costs.savings_percent)} of baseline spend`);
+      text("readRate", percent(summary.cache_read_rate_percent));
+      text("requestCount", `${summary.requests || 0} measured requests`);
+      if (!summary.requests) return;
+      const positive = (costs.savings || 0) >= 0;
+      text("verdict", positive ? "Caching reduced estimated spend" : "Cache writes exceed savings so far");
+      text("verdictDetail", positive
+        ? `${integer.format(summary.tokens.cache_read)} input tokens were served at the cache-read rate.`
+        : "Additional cache reads are needed to recover the initial cache-write premium.");
+    }
+
+    function renderCostComparison() {
+      const costs = DATA.summary.costs || {};
+      const maximum = Math.max(costs.with_cache || 0, costs.without_cache || 0, 0.000001);
+      document.getElementById("costComparison").innerHTML = [
+        ["With cache", costs.with_cache || 0, "cached"],
+        ["Without cache", costs.without_cache || 0, ""]
+      ].map(([label, value, className]) => `
+        <div class="compare-row">
+          <span class="compare-label">${label}</span>
+          <div class="track"><div class="bar ${className}" style="width:${value / maximum * 100}%"></div></div>
+          <span class="compare-value">${money.format(value)}</span>
+        </div>`).join("");
+      const pricing = DATA.pricing_usd_per_million_tokens;
+      document.getElementById("pricing").innerHTML = Object.entries(pricing)
+        .map(([key, value]) => `<span>${key.replaceAll("_", " ")}: $${Number(value).toFixed(2)}/1M</span>`).join("");
+    }
+
+    function renderTokenMix() {
+      const tokens = DATA.summary.tokens || {};
+      const total = Math.max(tokens.input || 0, 1);
+      const parts = [
+        ["standard", "Standard input", tokens.standard_input || 0],
+        ["read", "Cache read", tokens.cache_read || 0],
+        ["write", "Cache write", tokens.cache_write || 0]
+      ];
+      document.getElementById("tokenMix").innerHTML = `
+        <div class="token-total">${integer.format(tokens.input || 0)}</div>
+        <div class="stack" aria-label="Input token distribution">${parts.map(([kind, label, value]) =>
+          `<div class="segment ${kind}" style="width:${value / total * 100}%" title="${label}: ${integer.format(value)}"></div>`).join("")}</div>
+        <div class="legend">${parts.map(([kind, label, value]) => `
+          <div class="legend-row"><span class="swatch ${kind}"></span><span>${label}</span><strong>${integer.format(value)}</strong></div>`).join("")}</div>`;
+    }
+
+    function renderTrend() {
+      const svg = document.getElementById("trendChart");
+      const namespace = "http://www.w3.org/2000/svg";
+      svg.setAttribute("viewBox", "0 0 1000 280");
+      svg.replaceChildren();
+      if (!completedItems.length) return;
+      let cached = 0;
+      let baseline = 0;
+      const values = completedItems.map(item => {
+        cached += analysisValue(item, "costs", "with_cache");
+        baseline += analysisValue(item, "costs", "without_cache");
+        return { cached, baseline };
+      });
+      const maximum = Math.max(...values.flatMap(point => [point.cached, point.baseline]), 0.000001);
+      for (let line = 0; line <= 4; line += 1) {
+        const y = 240 - line * 55;
+        const grid = document.createElementNS(namespace, "line");
+        grid.setAttribute("x1", "38"); grid.setAttribute("x2", "990"); grid.setAttribute("y1", y); grid.setAttribute("y2", y);
+        grid.style.stroke = "var(--cp-border)";
+        svg.appendChild(grid);
+      }
+      const points = key => values.map((point, index) => {
+        const x = 38 + (values.length === 1 ? 0 : index / (values.length - 1) * 952);
+        const y = 240 - point[key] / maximum * 220;
+        return `${x},${y}`;
+      }).join(" ");
+      [["baseline", "var(--cp-border-strong)"], ["cached", "var(--cp-accent)"]].forEach(([key, color]) => {
+        const line = document.createElementNS(namespace, "polyline");
+        line.setAttribute("points", points(key)); line.setAttribute("fill", "none"); line.setAttribute("stroke-width", "4");
+        line.setAttribute("stroke-linecap", "round"); line.setAttribute("stroke-linejoin", "round"); line.style.stroke = color;
+        svg.appendChild(line);
+      });
+    }
+
+    function populateFilters() {
+      [["categoryFilter", "category"], ["difficultyFilter", "difficulty"]].forEach(([id, field]) => {
+        const select = document.getElementById(id);
+        [...new Set(DATA.items.map(item => item[field]).filter(Boolean))].sort().forEach(value => {
+          const option = document.createElement("option"); option.value = value; option.textContent = value.replaceAll("_", " "); select.appendChild(option);
+        });
+      });
+    }
+
+    function sortableValue(item, field) {
+      if (["input", "standard_input", "cache_write", "cache_read", "output"].includes(field)) return analysisValue(item, "tokens", field);
+      if (["with_cache", "without_cache", "savings"].includes(field)) return analysisValue(item, "costs", field);
+      return String(item[field] || "").toLowerCase();
+    }
+
+    function renderTable() {
+      const search = document.getElementById("search").value.toLowerCase();
+      const category = document.getElementById("categoryFilter").value;
+      const difficulty = document.getElementById("difficultyFilter").value;
+      const items = DATA.items.filter(item =>
+        (!search || `${item.id} ${item.prompt}`.toLowerCase().includes(search)) &&
+        (!category || item.category === category) && (!difficulty || item.difficulty === difficulty)
+      ).sort((left, right) => {
+        const a = sortableValue(left, sort.field); const b = sortableValue(right, sort.field);
+        return (a < b ? -1 : a > b ? 1 : 0) * sort.direction;
+      });
+      document.getElementById("emptyState").hidden = Boolean(items.length);
+      document.getElementById("requestRows").innerHTML = items.map(item => {
+        if (item.status !== "completed") return `<tr><td class="id">${item.id}</td><td class="prompt"></td><td colspan="8" class="failed">Failed: <span class="error"></span></td></tr>`;
+        const savings = analysisValue(item, "costs", "savings");
+        return `<tr>
+          <td class="id">${item.id}</td><td class="prompt"></td>
+          <td>${integer.format(analysisValue(item, "tokens", "input"))}</td><td>${integer.format(analysisValue(item, "tokens", "standard_input"))}</td><td>${integer.format(analysisValue(item, "tokens", "cache_write"))}</td><td>${integer.format(analysisValue(item, "tokens", "cache_read"))}</td><td>${integer.format(analysisValue(item, "tokens", "output"))}</td>
+          <td>${money.format(analysisValue(item, "costs", "with_cache"))}</td><td>${money.format(analysisValue(item, "costs", "without_cache"))}</td>
+          <td class="${savings >= 0 ? "positive" : "negative"}">${money.format(savings)}</td></tr>`;
+      }).join("");
+      document.querySelectorAll("#requestRows tr").forEach((row, index) => {
+        const item = items[index]; const promptCell = row.querySelector(".prompt");
+        if (promptCell) promptCell.textContent = item.prompt;
+        const errorCell = row.querySelector(".error");
+        if (errorCell) errorCell.textContent = item.error || "Request failed";
+      });
+    }
+
+    renderHeader(); renderCostComparison(); renderTokenMix(); renderTrend();
+    populateFilters(); renderTable();
+    ["search", "categoryFilter", "difficultyFilter"].forEach(id => document.getElementById(id).addEventListener("input", renderTable));
+    document.querySelectorAll(".sort-button").forEach(button => button.addEventListener("click", () => {
+      const field = button.dataset.sort; sort = { field, direction: sort.field === field ? -sort.direction : 1 };
+      document.querySelectorAll(".sort-button").forEach(candidate => candidate.parentElement.removeAttribute("aria-sort"));
+      button.parentElement.setAttribute("aria-sort", sort.direction === 1 ? "ascending" : "descending");
+      renderTable();
+    }));
+  </script>
+</body>
+</html>
